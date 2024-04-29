@@ -12,6 +12,7 @@ pipeline {
                     sh 'git pull --ff-only https://github.com/AntonioSesePerez/victorantonio.git '
                     sh 'rm -r data_directory'
                     sh 'rm -r zip_directory'
+                    sh 'git branch --list'
                     sh 'git add .'
                     sh 'git commit -m "Borrar directorios anteriores"'
                     sh 'git push origin main'
