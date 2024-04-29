@@ -10,7 +10,7 @@ pipeline {
                 script{
                     sh 'git config --global init.defaultBranch main'
                     sh 'git init'
-                    sh 'git pull https://github.com/AntonioSesePerez/victorantonio.git'
+                    sh 'git pull --ff-only https://github.com/AntonioSesePerez/victorantonio.git '
                     sh 'rm -r data_directory'
                     sh 'rm -r zip_directory'
                     sh 'git add .'
