@@ -1,12 +1,14 @@
 pipeline {
     agent any 
-    enviroment {
+    environment {
         GITHUB_CREDENTIALS_ID = ''
     }
     stages {
         stage('Init Pipeline'){
             steps {
-                sh echo 'Pipeline Started !'
+                script{
+                    sh echo 'Pipeline Started !'
+                }
             }
         }
 
@@ -40,11 +42,11 @@ pipeline {
             }
         }
 
-        stage('Clean Workspace') {
+        /*stage('Clean Workspace') {
             steps {
                 //Crear funcion
             }
-        }
+        }*/
 
         stage('Pull Artifacts') {
             steps{
