@@ -56,13 +56,16 @@ pipeline {
         stage('Pull Artifacts') {
             steps{
                 script {
-            sh "git clone https://github.com/AntonioSesePerez/victorantonio.git" // Pon el repo completo
-            dir('zip_directory') {
-                sh 'ls'
-                sh 'unzip data_dir.zip'
-                     }
+                sh "git clone https://github.com/AntonioSesePerez/victorantonio.git" // Pon el repo completo
+                sh 'git pull https://github.com/AntonioSesePerez/victorantonio.git'
+                dir('zip_directory') {
+                    sh 'unzip data_dir.zip'
+                    sh 'git add .'
+                    sh 'git commit -m "Adding artifacts"'
+                    sh 'git push origin main'
                 }
-            }
+             }
         }
-    }     
+    }
+ }     
 }
