@@ -41,6 +41,7 @@ pipeline {
         stage('Push Artifacts') {
             steps {
                 script {
+                    sh 'git config --global init.defaultBranch main'
                     sh 'git init'
                     sh 'git remote add origin https://github.com/AntonioSesePerez/victorantonio.git'
                     sh 'git add .'
