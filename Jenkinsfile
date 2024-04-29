@@ -41,7 +41,7 @@ pipeline {
         stage('Push Artifacts') {
             steps {
                 script {
-                    sh 'git remote -v'
+                    sh 'git branch main'
                     sh 'git add .'
                     sh 'git commit -m "Adding artifacts"'
                     sh 'git push origin main'
