@@ -7,7 +7,7 @@ pipeline {
         stage('Init Pipeline'){
             steps {
                 script{
-                    sh echo 'Pipeline Started !'
+                    sh 'echo "Pipeline Started !"'
                 }
             }
         }
