@@ -6,21 +6,6 @@ pipeline {
         WORKSPACE_DIR = "${WORKSPACE}/temp_workspace"
     }
 
-    def cleanDirectory(directoryPaths) {
-        directoryPaths.each { directory ->
-            if (fileExists(directory)) {
-                sh "rm -r ${directory}"
-                echo "Directorio ${directory} borrado."
-            } else {
-                echo "El directorio ${directory} no existe, no se pudo borrar."
-            }
-        }
-    }
-
-    def fileExists(filePath) {
-        return sh(script: "[ -d ${filePath} ]", returnStatus: true) == 0
-    }
-
     stages {
         stage('Clean Workspace') {
             steps {
@@ -98,5 +83,22 @@ pipeline {
                 }
             }
         }
+    }
+
+    // Definición del método cleanDirectory dentro del pipeline
+    def cleanDirectory(directoryPaths) {
+        directoryPaths.each { directory ->
+            if (fileExists(directory)) {
+                sh "rm -r ${directory}"
+                echo "Directorio ${directory} borrado."
+            } else {
+                echo "El directorio ${directory} no existe, no se pudo borrar."
+            }
+        }
+    }
+
+    // Definición del método fileExists dentro del pipeline
+    def fileExists(filePath) {
+        return sh(script: "[ -d ${filePath} ]", returnStatus: true) == 0
     }
 }
