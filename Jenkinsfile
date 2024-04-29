@@ -5,20 +5,6 @@ pipeline {
     }
     
     stages {
-        stage ('Clean GitHub'){
-            steps{
-                script{
-                    sh 'git config --global init.defaultBranch main'
-                    sh 'git pull https://github.com/AntonioSesePerez/victorantonio.git '
-                    sh 'rm -r data_directory'
-                    sh 'rm -r zip_directory'
-                    sh 'git branch --list'
-                    sh 'git add .'
-                    sh 'git commit -m "Borrar directorios anteriores"'
-                    sh 'git push origin main'
-                }   
-            }
-        }
         stage('Clean Workspace') {
             steps {
                cleanWs()
