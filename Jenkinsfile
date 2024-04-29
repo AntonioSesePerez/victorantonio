@@ -35,6 +35,7 @@ pipeline {
         stage('Push Artifacts') {
             steps {
                 script {
+                    sh 'git branch -b'
                     sh 'git add .'
                     sh 'git commit -m "Adding artifacts"'
                     sh 'git push origin main'
@@ -52,7 +53,7 @@ pipeline {
             steps{
                 script {
             sh "git clone https://github.com/AntonioSesePerez/victorantonio.git" // Pon el repo completo
-            cd('directorio_del_repo') {
+            cd('data_directory') {
                 sh 'unzip data_dir.zip'
                      }
                 }
