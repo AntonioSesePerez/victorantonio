@@ -37,7 +37,7 @@ pipeline {
                 script {
                     sh 'git add .'
                     sh 'git commit -m "Adding artifacts"'
-                    sh 'git push origin master'
+                    sh 'git push origin main'
                 }
             }
         }
