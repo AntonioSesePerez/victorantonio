@@ -57,7 +57,7 @@ pipeline {
             steps{
                 script {
             sh "git clone https://github.com/AntonioSesePerez/victorantonio.git" // Pon el repo completo
-            cd('data_directory') {
+            dir('data_directory') {
                 sh 'unzip data_dir.zip'
                      }
                 }
