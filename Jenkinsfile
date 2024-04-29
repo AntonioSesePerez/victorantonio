@@ -3,7 +3,23 @@ pipeline {
     environment {
         GITHUB_CREDENTIALS_ID = 'victorAntonioCred'
     }
+    
     stages {
+        stage ('Clean GitHub'){
+            steps{
+                script{
+                    sh 'git config --global init.defaultBranch main'
+                    sh 'git init'
+                    sh 'git remote add origin https://github.com/AntonioSesePerez/victorantonio.git'
+                    sh 'git pull https://github.com/AntonioSesePerez/victorantonio.git'
+                    sh 'rm -r data_directory'
+                    sh 'rm -r zip_directory'
+                    sh 'git add .'
+                    sh 'git commit -m "Borrar directorios anteriores"'
+                    sh 'git push origin main'
+                }   
+            }
+        }
         stage('Clean Workspace') {
             steps {
                cleanWs()
@@ -41,9 +57,6 @@ pipeline {
         stage('Push Artifacts') {
             steps {
                 script {
-                    sh 'git config --global init.defaultBranch main'
-                    sh 'git init'
-                    sh 'git remote add origin https://github.com/AntonioSesePerez/victorantonio.git'
                     sh 'git pull https://github.com/AntonioSesePerez/victorantonio.git'
                     sh 'git add .'
                     sh 'git commit -m "Adding artifacts"'
