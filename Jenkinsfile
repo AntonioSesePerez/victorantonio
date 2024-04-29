@@ -4,6 +4,12 @@ pipeline {
         GITHUB_CREDENTIALS_ID = 'victorAntonioCred'
     }
     stages {
+        stage('Clean Workspace') {
+            steps {
+               cleanWs()
+            }
+        }
+        
         stage('Init Pipeline'){
             steps {
                 script{
@@ -43,11 +49,6 @@ pipeline {
             }
         }
 
-        stage('Clean Workspace') {
-            steps {
-               cleanWs()
-            }
-        }
 
         stage('Pull Artifacts') {
             steps{
