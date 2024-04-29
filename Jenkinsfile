@@ -43,11 +43,11 @@ pipeline {
             }
         }
 
-        /*stage('Clean Workspace') {
+        stage('Clean Workspace') {
             steps {
-                //Crear funcion
+               cleanWs()
             }
-        }*/
+        }
 
         stage('Pull Artifacts') {
             steps{
