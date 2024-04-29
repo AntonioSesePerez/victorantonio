@@ -1,10 +1,3 @@
-pipeline {
-    agent any 
-
-    environment {
-        GITHUB_CREDENTIALS_ID = 'victorAntonioCred'
-        WORKSPACE_DIR = "${WORKSPACE}/temp_workspace"
-    }
 
     def cleanDirectory(directoryPaths) {
         directoryPaths.each { directory ->
@@ -19,6 +12,15 @@ pipeline {
 
     def fileExists(filePath) {
         return sh(script: "[ -d ${filePath} ]", returnStatus: true) == 0
+    }
+
+pipeline {
+
+    agent any 
+    
+        environment {
+        GITHUB_CREDENTIALS_ID = 'victorAntonioCred'
+        WORKSPACE_DIR = "${WORKSPACE}/temp_workspace"
     }
 
     stages {
