@@ -1,7 +1,7 @@
 pipeline {
     agent any 
     environment {
-        GITHUB_CREDENTIALS_ID = ''
+        GITHUB_CREDENTIALS_ID = 'victorAntonioCred'
     }
     stages {
         stage('Init Pipeline'){
