@@ -1,24 +1,24 @@
-def cleanDirectory(directoryPaths) {
-    directoryPaths.each { directory ->
-        if (fileExists(directory)) {
-            sh "rm -r ${directory}"
-            echo "Directorio ${directory} borrado."
-        } else {
-            echo "El directorio ${directory} no existe, no se pudo borrar."
-        }
-    }
-}
-
-def fileExists(filePath) {
-    return sh(script: "[ -d ${filePath} ]", returnStatus: true) == 0
-}
-
 pipeline {
     agent any 
 
     environment {
         GITHUB_CREDENTIALS_ID = 'victorAntonioCred'
         WORKSPACE_DIR = "${WORKSPACE}/temp_workspace"
+    }
+
+    def cleanDirectory(directoryPaths) {
+        directoryPaths.each { directory ->
+            if (fileExists(directory)) {
+                sh "rm -r ${directory}"
+                echo "Directorio ${directory} borrado."
+            } else {
+                echo "El directorio ${directory} no existe, no se pudo borrar."
+            }
+        }
+    }
+
+    def fileExists(filePath) {
+        return sh(script: "[ -d ${filePath} ]", returnStatus: true) == 0
     }
 
     stages {
@@ -77,10 +77,15 @@ pipeline {
         stage('Push Artifacts') {
             steps {
                 script {
+                    // Inicializar el repositorio Git en el directorio clonado
+                    sh "git init ${WORKSPACE_DIR}"
+                    
+                    // Cambiar al directorio clonado
                     dir(WORKSPACE_DIR) {
+                        // Agregar los archivos al repositorio
                         sh 'git add .'
                         sh 'git commit -m "Adding artifacts"'
-                        sh 'git push origin dev'
+                        sh 'git push origin main'
                     }
                 }
             }
