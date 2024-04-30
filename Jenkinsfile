@@ -37,6 +37,7 @@ pipeline {
                     sh 'git pull https://github.com/AntonioSesePerez/victorantonio.git '
                     sh 'rm -r data_directory'
                     sh 'rm -r zip_directory'
+                    sh 'git remote add origin https://github.com/AntonioSesePerez/victorantonio.git'
                     sh 'git branch --list'
                     sh 'git add .'
                     sh 'git commit -m "Borrar directorios anteriores"'
