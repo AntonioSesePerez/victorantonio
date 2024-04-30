@@ -50,6 +50,7 @@ pipeline {
             steps {
                 script {
                     sh 'git init'
+                    sh 'git remote add origin https://github.com/AntonioSesePerez/victorantonio.git'
                     sh 'git config --global init.defaultBranch main'
                     sh 'git pull https://github.com/AntonioSesePerez/victorantonio.git '
                     sh 'chmod +x removeDir.sh'
