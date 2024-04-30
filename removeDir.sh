@@ -1,6 +1,6 @@
 #!/bin/bash
 
-directorios=$(ls -d)
+directorios=$(ls -d */)
 
 for directorio in $directorios; do
     echo "Eliminando directorio: ${directorio}"
