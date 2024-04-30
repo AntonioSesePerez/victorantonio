@@ -29,7 +29,7 @@ pipeline {
             }
         }
 
-        stage ('Clean GitHub'){
+/*        stage ('Clean GitHub'){
             steps{
                 script{
                     sh 'git init'
@@ -45,7 +45,7 @@ pipeline {
                 }   
             }
         }
-
+*/
         stage('Generating .zip') {
             steps {
                 script {
