@@ -55,6 +55,9 @@ pipeline {
                     sh 'git pull https://github.com/AntonioSesePerez/victorantonio.git '
                     sh 'chmod +x removeDir.sh'
                     sh './removeDir.sh'
+                    sh 'git add .'
+                    sh 'git commit -m "Borrar directorios anteriores"'
+                    sh 'git push origin main'
                 }
             }
         }
