@@ -61,7 +61,6 @@ pipeline {
                 script {
                     sh 'git config --global init.defaultBranch main'
                     sh 'git init'
-                    sh 'git remote add origin https://github.com/AntonioSesePerez/victorantonio.git'
                     sh 'git pull https://github.com/AntonioSesePerez/victorantonio.git'
                     sh 'git add .'
                     sh 'git commit -m "Adding artifacts"'
