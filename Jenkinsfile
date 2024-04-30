@@ -46,7 +46,7 @@ pipeline {
             }
         }
 */        
-        stage('Script Remove Dir')
+        stage('Script Remove Dir') {
             steps {
                 script {
                     sh 'git init'
@@ -56,6 +56,7 @@ pipeline {
                     sh './removeDir.sh'
                 }
             }
+        }
         
         stage('Generating .zip') {
             steps {
