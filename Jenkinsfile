@@ -29,10 +29,11 @@ pipeline {
             }
         }
 
-/*        stage ('Clean GitHub'){
+        stage ('Clean GitHub'){
             steps{
                 script{
                     sh 'git init'
+                    sh 'git remote add origin https://github.com/AntonioSesePerez/victorantonio.git'
                     sh 'git config --global init.defaultBranch main'
                     sh 'git pull https://github.com/AntonioSesePerez/victorantonio.git '
                     sh 'rm -r data_directory'
@@ -45,7 +46,7 @@ pipeline {
                 }   
             }
         }
-*/
+
         stage('Generating .zip') {
             steps {
                 script {
@@ -60,7 +61,6 @@ pipeline {
             steps {
                 script {
                     sh 'git init'
-                    sh 'git remote add origin https://github.com/AntonioSesePerez/victorantonio.git'
                     sh 'git config --global init.defaultBranch main'
                     sh 'git pull https://github.com/AntonioSesePerez/victorantonio.git'
                     sh 'git add .'
