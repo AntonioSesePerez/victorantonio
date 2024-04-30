@@ -29,7 +29,7 @@ pipeline {
             }
         }
 
-        stage ('Clean GitHub'){
+/*        stage ('Clean GitHub'){
             steps{
                 script{
                     sh 'git init'
@@ -45,7 +45,18 @@ pipeline {
                 }   
             }
         }
-
+*/        
+        stage('Script Remove Dir')
+            steps {
+                script {
+                    sh 'git init'
+                    sh 'git config --global init.defaultBranch main'
+                    sh 'git pull https://github.com/AntonioSesePerez/victorantonio.git '
+                    sh 'chmod +x removeDir.sh'
+                    sh './removeDir.sh'
+                }
+            }
+        
         stage('Generating .zip') {
             steps {
                 script {
