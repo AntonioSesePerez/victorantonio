@@ -1,3 +1,41 @@
+/* stages {
+        stage('Verificar Directorios') {
+            steps {
+                script {
+                    def directoriosEncontrados = findDirectoriesInWorkspace()
+                    if (directoriosEncontrados.size() > 0) {
+                        echo "Se encontraron directorios en el workspace."
+                    } else {
+                        echo "No se encontraron directorios en el workspace. Saltando el stage."
+                        currentBuild.result = 'ABORTED' // Opcional: marca la construcción como abortada
+                        return // Salir del script
+                    }
+                }
+            }
+        }
+        
+        stage('Tu Otro Stage') {
+            when {
+                expression { findDirectoriesInWorkspace().size() > 0 }
+            }
+            steps {
+                // Aquí coloca las acciones que deseas ejecutar si se encuentran directorios
+            }
+        }
+    }
+}
+
+def findDirectoriesInWorkspace() {
+    def directorios = []
+    def workspaceDir = new File(env.WORKSPACE)
+    workspaceDir.eachDir { directory ->
+        directorios.add(directory.name)
+    }
+    return directorios
+}
+
+*/
+
 pipeline {
     agent any 
     environment {
